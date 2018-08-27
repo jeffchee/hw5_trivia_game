@@ -1,0 +1,41 @@
+html {
+    align-content: center;
+    Width:980px;
+
+}
+
+Header{
+    align-content: center;
+    margin: 20px red;
+    border: solid blue;
+    padding: white 20px;
+    
+}
+
+h1 {
+    text-align: center;
+    font-size: 36px;
+    font-style: bold;   
+}
+
+h2 {
+    border: solid red 2px;
+    width:800px;
+    font-size: 18px;
+    font: Courier;
+    padding: 100px;
+    margin:90px;
+}
+
+.questions{
+    width:800px;
+    margin:90px;
+    border:black 2px solid;
+    text-align: center;
+    padding: 20px;
+}
+
+button{
+    padding:5px;
+
+}
