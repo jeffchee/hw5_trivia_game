@@ -1,9 +1,8 @@
 $(document).ready(function () {
 
+    var alertResponse = alert("Ready? You have 45 seconds to answer the following questions!");
 
-    alert("Ready? You have 45 seconds to answer the following questions!")
-
-
+    console.log("alertResponse", alertResponse)
 
     var questions = [
         {
@@ -40,6 +39,9 @@ $(document).ready(function () {
     console.log(TFquestions.question);
     console.log(TFquestions.answer);
 
+    var eventDemo = document.getElementById("event-demo").addEventListener("click", function (event) {
+        console.log(event);
+    });
 
 
     $(".displayQuestion").text(TFquestions.question);
@@ -48,51 +50,93 @@ $(document).ready(function () {
         return;
     }
     var userTrue = "t";
-    $(".uTpick").on("click", userTrue);
-    console.log(userTrue);
+    $(".uTpick").on("click", function () {
+        console.log(userTrue);
+    });
+
 
     var userFalse = "f";
-    $(".uFpick").on("click", userFalse);
-    console.log(userFalse);
+    $(".uFpick").on("click", function () {
+        console.log(userFalse);
+    });
 
 
 
-function correctlyAnswered(final){
+    function correctlyAnswered(final) {
 
-    var score = 0;
-    var userCorrect = score;
-    var percent;
-    percent = score/TFquestions.length;
-}
+        var score = 0;
+        var userCorrect = score;
+        var percent;
+        percent = score / TFquestions.length;
+    }
 
 
 
-    function userStart(event) {
+    function userStart() {
         // Captures the key press, converts it to lowercase, and saves it to a variable.
 
-
-        var userTrue = event.key.toLowerCase();
-        var userFalse = event.key.toLowerCase();
-
         if (userTrue === 't' || userFalse === 'f') {
-            var correct = TFquestions.answer === userTrue;
-            var correct = TFquestions.answer === userFalse;
-            if (correct) {
-                score++;
-                console.log("Correct! ");
-                console.log(score);
-            } else {
-                console.log("Wrong! ");
-                console.log(score);
-            }
-            index++;
-            console.log(questions[index].question);
+            // var correct = TFquestions.answer === userTrue;
+            // var correct = TFquestions.answer === userFalse;
+            // if (correct) {
+            score++;
+            console.log("Correct! ");
+            console.log(score);
+        } else {
+            console.log("Wrong! ");
+            console.log(score);
         }
+        index++;
+        console.log(questions[index].question);
     }
+
 
     userStart();
 
-});
+    var countDown = 45;
+    var intervalId;
+
+    console.log(countDown);
+
+    function run() {
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    }
+
+    function decrement() {
+        countDown--;
+        $("#showNumber").text(countDown);
+        if (number === 0) {
+            stop();
+            alert("Times Up!");
+        }
+
+        function stop() {
+            clearInterval(intervalId);
+        }
+        
+
+    }
+
+    run();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+})
 
 // display question 1 at a time, load one question on the screen
 // after you answer
